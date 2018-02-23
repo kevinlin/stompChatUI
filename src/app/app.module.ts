@@ -1,8 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
 
-
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
+import {StompService} from './stomp-service.service';
 
 
 @NgModule({
@@ -10,9 +11,11 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [StompService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
