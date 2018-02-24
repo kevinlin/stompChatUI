@@ -8,6 +8,10 @@ import {StompService} from './stomp-service.service';
 })
 export class AppComponent implements OnDestroy {
 
+  static colors = [
+    '#2196F3', '#32c787', '#00BCD4', '#ff5652', '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
+  ];
+
   @ViewChild('messageArea') messageArea: ElementRef;
 
   connected = false;
@@ -16,10 +20,6 @@ export class AppComponent implements OnDestroy {
   username: string;
   messageContent: string;
   messages: Message[] = [];
-
-  private colors = [
-    '#2196F3', '#32c787', '#00BCD4', '#ff5652', '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
-  ];
 
   constructor(private stompClient: StompService) {
     stompClient.configure({
@@ -102,8 +102,8 @@ export class AppComponent implements OnDestroy {
       hash = 31 * hash + messageSender.charCodeAt(i);
     }
 
-    const index = Math.abs(hash % this.colors.length);
-    return this.colors[index];
+    const index = Math.abs(hash % AppComponent.colors.length);
+    return AppComponent.colors[index];
   }
 }
 
