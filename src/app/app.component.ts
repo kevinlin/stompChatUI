@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
 import {StompService} from './stomp-service.service';
 
 @Component({
@@ -7,6 +7,8 @@ import {StompService} from './stomp-service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnDestroy {
+
+  @ViewChild('messageArea') messageArea: ElementRef;
 
   connected = false;
   connecting = false;
@@ -89,8 +91,9 @@ export class AppComponent implements OnDestroy {
     } else {
       message.messageClass = 'chat-message';
     }
-
     this.messages.push(message);
+
+    this.messageArea.nativeElement.scrollTop = this.messageArea.nativeElement.scrollHeight;
   }
 
   getAvatarColor(messageSender: string): string {

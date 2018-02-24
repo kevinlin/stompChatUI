@@ -20,7 +20,7 @@
     <div class="connecting" *ngIf="connecting">
       Connecting...
     </div>
-    <ul id="messageArea">
+    <ul id="messageArea" #messageArea>
       <li *ngFor="let message of messages" [ngClass]="message.messageClass">
         <i *ngIf="message.type === 'CHAT'" [ngStyle]="{'background-color': getAvatarColor(message.sender)}">{{message.sender[0]}}</i>
         <span *ngIf="message.type === 'CHAT'">{{message.sender}}</span>
